@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+USE master;
+GO
+	
 /*
 
 ===================================================================================
@@ -19,10 +21,6 @@ WARNING :
 	Please take the required Backups if required any.
 
 */
-
-
-USE master;
-GO
 
 --Drop and Recreate Database if exists
 IF EXISTS (SELECT 1 FROM sys.databases WHERE NAME = 'DataWareHouse')

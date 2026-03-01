@@ -2,16 +2,22 @@ USE DataWareHouse
 GO
 
 /*
+--========================================================================================
 Developer		 : Ritesh Herkal
 Developed on	 : 01-March-2026
+--========================================================================================
 				 
 Script Purpose	 : Creation of table Erp_LocA101
 Script Objective : To store Data coming from one the Erp source Files, Loc_A101
 How to Execute	 : Select * from Bronze.Erp_LocA101
 
 Revision History:
+------------------------------------------------------------------------------------------
 Developed By		Developed On			Description
+------------------------------------------------------------------------------------------
 Ritesh Herkal		01-March-2026			Initial Draft
+
+--========================================================================================
 
 */
 

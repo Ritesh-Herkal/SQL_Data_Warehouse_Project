@@ -1,9 +1,11 @@
-USE DataWareHouse
+﻿USE DataWareHouse
 GO
 
 /*
+--========================================================================================
 Developer		 : Ritesh Herkal
 Developed on	 : 01-March-2026
+--========================================================================================
 				 
 Script Purpose	 : Load data from Source System (CRM & ERP) into Bronze Layer
 Script Objective :	1. Truncate existing Bronze tables
@@ -14,12 +16,65 @@ Script Objective :	1. Truncate existing Bronze tables
 How to Execute	 : EXEC Bronze.Load_Bronze
 
 Revision History:
+------------------------------------------------------------------------------------------
 Developed By		Developed On			Description
+------------------------------------------------------------------------------------------
 Ritesh Herkal		01-March-2026			Initial Draft
 
+--========================================================================================
 */
 
-CREATE OR ALTER PROCEDURE Bronze.Load_Bronze 
+--========================================================================================
+--Bakcup Script
+--========================================================================================
+-- Step 1: Check if table exists
+IF OBJECT_ID('Bronze.Load_Bronze', 'P') IS NOT NULL
+BEGIN
+    PRINT 'Procedure exists. Creating backup...	';
+
+    -- Step 2: Declare variables
+    DECLARE @SchemaName NVARCHAR(100)		= 'Bronze'
+    DECLARE @ProcName  NVARCHAR(100)		= 'Load_Bronze'
+    DECLARE @BackupProcName NVARCHAR(200)
+    DECLARE @SQL NVARCHAR(MAX)
+
+    -- Step 3: Generate backup table name with today’s date
+    SET @BackupProcName = @ProcName + '_Backup_' + FORMAT(GETDATE(), 'yyyyMMdd')
+
+	-- Step 4: If Backup Already Exists → Drop It
+    IF OBJECT_ID(@SchemaName + '.' + @BackupProcName, 'P') IS NOT NULL
+    BEGIN
+        PRINT 'Backup already exists. Dropping old backup...';
+        SET @SQL = 'DROP PROCEDURE ' + QUOTENAME(@SchemaName) + '.' + QUOTENAME(@BackupProcName);
+
+        EXEC sp_executesql @SQL;
+        PRINT 'Old backup dropped.';
+    END
+
+    -- Step 5: Get original procedure definition
+    SELECT @SQL = OBJECT_DEFINITION(OBJECT_ID(@SchemaName + '.' + @ProcName))
+
+    -- Step 6: Replace procedure name with backup name
+    SET @SQL = REPLACE(@SQL, 
+						@SchemaName + '.' + @ProcName, 
+						@SchemaName + '.' + @BackupProcName)
+
+    EXEC sp_executesql @SQL
+
+    PRINT 'Backup created: ' + @BackupProcName;
+
+    -- Step 7: Drop original table using dynamic SQL
+    SET @SQL =  'DROP PROCEDURE ' +  QUOTENAME(@SchemaName) + '.' +  QUOTENAME(@ProcName)
+
+    EXEC sp_executesql @SQL
+
+    PRINT 'Old Procedure dropped.';
+END
+GO
+--========================================================================================
+
+
+CREATE PROCEDURE Bronze.Load_Bronze 
 AS
 
 BEGIN

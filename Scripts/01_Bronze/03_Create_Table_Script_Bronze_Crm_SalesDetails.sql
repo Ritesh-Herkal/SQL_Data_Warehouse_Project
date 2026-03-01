@@ -2,16 +2,22 @@ USE DataWareHouse
 GO
 
 /*
+--========================================================================================
 Developer		 : Ritesh Herkal
 Developed on	 : 01-March-2026
+--========================================================================================
 				 
 Script Purpose	 : Creation of table Crm_SalesDetails
 Script Objective : To store Data coming from one the CRM source Files, sales_details
 How to Execute	 : Select * from Bronze.Crm_SalesDetails
 
 Revision History:
+------------------------------------------------------------------------------------------
 Developed By		Developed On			Description
+------------------------------------------------------------------------------------------
 Ritesh Herkal		01-March-2026			Initial Draft
+
+--========================================================================================
 
 */
 

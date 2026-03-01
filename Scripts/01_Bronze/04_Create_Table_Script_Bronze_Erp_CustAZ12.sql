@@ -2,16 +2,22 @@ USE DataWareHouse
 GO
 
 /*
+--========================================================================================
 Developer		 : Ritesh Herkal
 Developed on	 : 01-March-2026
+--========================================================================================
 				 
 Script Purpose	 : Creation of table Erp_CustAZ12
 Script Objective : To store Data coming from one the Erp source Files, Cust_AZ12
 How to Execute	 : Select * from Bronze.Erp_CustAZ12
 
 Revision History:
+------------------------------------------------------------------------------------------
 Developed By		Developed On			Description
+------------------------------------------------------------------------------------------
 Ritesh Herkal		01-March-2026			Initial Draft
+
+--========================================================================================
 
 */
 

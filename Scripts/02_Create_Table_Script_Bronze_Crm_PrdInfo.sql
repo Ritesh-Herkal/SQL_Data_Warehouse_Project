@@ -5,9 +5,9 @@ GO
 Developer		 : Ritesh Herkal
 Developed on	 : 01-March-2026
 				 
-Script Purpose	 : Creation of table Crm_CustInfo
-Script Objective : To store Data coming from one the CRM source Files, custInfo
-How to Execute	 : Select * from Bronze.Crm_CustInfo
+Script Purpose	 : Creation of table Crm_PrdInfo
+Script Objective : To store Data coming from one the CRM source Files, prd_info
+How to Execute	 : Select * from Bronze.Crm_PrdInfo
 
 Revision History:
 Developed By		Developed On			Description
@@ -15,15 +15,14 @@ Ritesh Herkal		01-March-2026			Initial Draft
 
 */
 
-
 -- Step 1: Check if table exists
-IF OBJECT_ID('Bronze.Crm_CustInfo', 'U') IS NOT NULL
+IF OBJECT_ID('Bronze.Crm_PrdInfo', 'U') IS NOT NULL
 BEGIN
     PRINT 'Table exists. Creating backup...';
 
     -- Step 2: Declare variables
     DECLARE @SchemaName NVARCHAR(100)		= 'Bronze'
-    DECLARE @TableName NVARCHAR(100)		= 'Crm_CustInfo'
+    DECLARE @TableName NVARCHAR(100)		= 'Crm_PrdInfo'
     DECLARE @BackupTableName NVARCHAR(200)
     DECLARE @SQL NVARCHAR(MAX)
 
@@ -46,14 +45,14 @@ BEGIN
 END
 
 --Step 6 : Creates the Table
-CREATE TABLE Bronze.Crm_CustInfo
+CREATE TABLE Bronze.Crm_PrdInfo
 (
-	cst_id				INT,
-	cst_key				NVARCHAR(50),
-	cst_firstname		NVARCHAR(100),
-	cst_lastname		NVARCHAR(100),
-	cst_marital_status	NVARCHAR(10),
-	cst_gndr			NVARCHAR(10),
-	cst_create_date		DATE
+	prd_id				INT,
+	prd_key				NVARCHAR(50),
+	prd_nm				NVARCHAR(100),
+	prd_cost			INT,
+	prd_line			NVARCHAR(10),
+	prd_start_dt		DATE,
+	prd_end_dt			DATE
 );
 GO

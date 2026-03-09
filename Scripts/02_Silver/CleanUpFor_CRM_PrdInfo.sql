@@ -135,7 +135,13 @@ SELECT
     -- Replace NULL cost values
     ISNULL(prd_cost,0) AS prd_cost,
 
-    prd_line,
+	-- Standardize product line values
+    CASE 
+		WHEN UPPER(TRIM(prd_line)) = 'M' THEN 'Mountain'
+		WHEN UPPER(TRIM(prd_line)) = 'R' THEN 'Road'
+		WHEN UPPER(TRIM(prd_line)) = 'S' THEN 'Other Sales'
+		WHEN UPPER(TRIM(prd_line)) = 'T' THEN 'Touring'
+	END AS prd_line,
 
     prd_start_dt,
 

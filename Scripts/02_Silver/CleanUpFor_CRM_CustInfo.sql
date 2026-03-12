@@ -186,8 +186,12 @@ FROM
 Bronze.Crm_CustInfo
 )
 
-SELECT * 
+INSERT INTO Silver.Crm_CustInfo
+(cst_id, cst_key, cst_firstname, cst_lastname, cst_marital_status, cst_gndr, cst_create_date)
+SELECT cst_id, cst_key, cst_firstname, cst_lastname, cst_marital_status, cst_gndr, cst_create_date
 FROM Cleaned_Data_Crm_CustInfo
 WHERE 
 RN = 1					-- Keep latest record
 AND cst_id IS NOT NULL	-- Remove NULL IDs
+
+--SELECT * FROM SILVER.Crm_CustInfo

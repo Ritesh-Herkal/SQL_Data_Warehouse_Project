@@ -121,6 +121,9 @@ ORDER BY prd_key, prd_end_dt
     4. Correct product end date using next start date logic
 */
 
+INSERT INTO SILVER.Crm_PrdInfo
+(prd_id, Cat_ID, prd_key, prd_nm, prd_cost, prd_line, prd_start_dt, prd_end_dt)
+
 SELECT
     prd_id,
 

@@ -54,10 +54,11 @@ END
 CREATE TABLE Silver.Crm_PrdInfo
 (
 	prd_id					INT,
+	cat_id					NVARCHAR(50),
 	prd_key					NVARCHAR(50),
 	prd_nm					NVARCHAR(100),
 	prd_cost				INT,
-	prd_line				NVARCHAR(10),
+	prd_line				NVARCHAR(20),
 	prd_start_dt			DATE,
 	prd_end_dt				DATE,
 	dwh_created_date		DATETIME DEFAULT GETDATE(),

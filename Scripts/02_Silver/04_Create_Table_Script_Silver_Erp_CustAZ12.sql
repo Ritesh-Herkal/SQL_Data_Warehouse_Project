@@ -58,6 +58,6 @@ CREATE TABLE Silver.Erp_CustAZ12
 	GEN						NVARCHAR(10),
 	dwh_created_date		DATETIME DEFAULT GETDATE(),
 	dwh_last_modified_date	DATETIME DEFAULT GETDATE(),
-	dwh_source				NVARCHAR(10) DEFAULT 'CRM'
+	dwh_source				NVARCHAR(10) DEFAULT 'ERP'
 );
 GO
